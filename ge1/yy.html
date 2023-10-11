@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/8.5.23/mmenu.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/8.5.23/mmenu.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
 <meta charset="utf-8">
 <title>Umedakita</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
-  *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Montserrat', serif;
-  }
+  
   body {
       height: 100vh;
       width: 100vw;
   }
   #top{
-      position: relative;
+      position:relative;
       width: 100%;
       height: 100%;
       overflow: hidden;
@@ -28,7 +26,6 @@
       content:'';
       position: absolute;
       bottom: 0;
-      left: 0;
       height:200px;
       width: 100%;
       background:linear-gradient(to top,#fff,transparent);
@@ -36,10 +33,10 @@
   }
   #man{
       top: inherit;
-      bottom: 0;
-      left: 200px;
+      bottom:0px;
+      left: 100px;
       width: 85%;
-      height: 55%;
+      height: 45%;
       z-index:50;
   }
   section img{
@@ -92,10 +89,18 @@
     transform:translateY(-10px);
   }
   #mountain_left{
-      position:0px 0px;
+     
       width: 40%;
       height: 100%;
       z-index:10;
+  }
+  #mountain_right{
+     position:inherit;
+    left:1300px;
+       top:100px;
+       width:40%;
+     height:95%;  
+     z-index:30;
   }
   #cloud_1{
    z-index:200;
@@ -103,10 +108,154 @@
   #cloud_2{
    z-index:200;
   }
+  :root {
+        --color-primary: #5888aa;
+        --color-callout: #fad188;
+        --color-text: #fff;
+        --color-dark-bg: #030305;
+        --color-dark-border: #2a6787;
+        --color-light-bg: rgb(255 255 255 / 15%);
+        --color-light-border: rgb(255 255 255 / 60%);
+        --color-gold: #ffda71;
+        --color-silver: #ced0ca;
+        --color-bronze: #bba6a2;
+        --section-padding: clamp(85px, 15vw, 150px);
+        --container-padding: clamp(15px, 4vw, 30px);
+    }
+    
+  .high-contrast {
+        --color-primary: #265d79;
+        --color-callout: #fff;
+        --color-dark-bg: #22526c;
+        --color-dark-border: #22526c;
+        --color-light-bg: #fff;
+        --color-light-border: #fff;
+    }
+   h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: 130%;
+    }
+    a {
+        color: inherit;
+        text-decoration: underline;
+    }
+    
+  *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', serif;
+      -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+  }
+  *:before,
+  *:after {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
 
+    }
+   #menu:not(.mm-menu):not(.mm) {
+        display: none;
+    }
+   #header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        height: 50px;
+        font-size: 18px;
+        font-weight: 400;
+        color: #000000;
+        background: var(--header-color, #ffffff);
+        box-shadow: 0 0 2em rgb(0 0 0 / 30%);
+    }
+    #header a {
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 10px;
+        width: 50px;
+        height: 50px;
+        text-decoration: none;
+    }
+    #header a[href="#menu"] {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .mm-wrapper--opened #header a[href="#menu"] {
+        display: none;
+    }
+    #header a[href="#page"] {
+        display: none;
+    }
+    .mm-wrapper--opened #header a[href="#page"] {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    small {
+        color:#ffffff;
+        font-size:25px;
+    }
 </style>
 </head>
 <body>
+<script>
+    $(document).ready(function() {
+        $("#menu").mmenu();
+    });
+  document.addEventListener("DOMContentLoaded", () => {
+            new Mmenu("#menu", {
+                offCanvas: {
+                    position: "left"
+                },
+                theme: "black",
+                counters: {
+                    add: true
+                },
+                iconbar: {
+                    use: true,
+                    top: [
+                        "<a href='#/'><i class='fa fa-home' aria-hidden='true'></i></a>",
+                        "<a href='#/'><i class='fa fa-user' aria-hidden='true'></i></a>",
+                    ],
+                    bottom: [
+                        "<a href='#/'><i class='fa-brands fa-twitter' aria-hidden='true'></i></a>",
+                        "<a href='#/'><i class='fa-brands fa-facebook' aria-hidden='true'></i></a>",
+                        "<a href='#/'><i class='fa-brands fa-linkedin' aria-hidden='true'></i></a>",
+                    ]
+                },
+                navbars: [
+                    {
+                        position: "top",
+                        content: ["searchfield"]
+                    }
+                ]
+            });
+    });
+</script>
+  <nav id="header">
+            <a href="#menu"><i class="fa fa-bars" aria-hidden="true"> MENU </i></a>
+  </nav>
   <section id="top">
     <img src="ume.jpg" id="bg" />
     <h2 id="text">Umeda kita</h2>
@@ -114,14 +263,91 @@
     <img src="https://aryan-tayal.github.io/Mountains-Parallax/clouds_1.png" id="clouds_1" />
     <img src="https://aryan-tayal.github.io/Mountains-Parallax/clouds_2.png" id="clouds_2" />
     <img src="sky.png" id="mountain_left" />
-    <img src="https://aryan-tayal.github.io/Mountains-Parallax/mountain_right.png" id="mountain_right" />
+    <img src="photo_list08-removebg-preview.png" id="mountain_right" />
   </section>
   <section id="sec">
-    <h2>Welcome to the Mountains</h2>
+    <h2>Welcome to Osaka Umeda</h2>
     <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. A earum ipsam laboriosam mollitia, architecto esse voluptates eligendi provident soluta et cupiditate sit nisi at dolorum iure dignissimos cumque amet necessitatibus blanditiis? Earum assumenda soluta reiciendis recusandae, incidunt tenetur nihil adipisci corrupti, quibusdam ullam numquam iusto veritatis facilis ab dicta, nobis inventore eius magni eveniet quo? Repellat nobis quos, facilis quam perspiciatis asperiores delectus, aliquid nihil molestias in at modi nulla minima deleniti. Minima aliquid magnam libero reiciendis et, nesciunt repellendus eum vel rerum alias ea enim fugiat eius. Quae dolores, amet nam ab officiis corrupti sequi eligendi quo culpa illum.
+       Umeda (Japanese: 梅田) is a major commercial, business, shopping and entertainment district in Kita-ku, Osaka, Japan, 
+      and the city's main northern railway terminus (Ōsaka Station, Umeda Station). The district's name means "plum field".
     </p>
+    <div>
   </section>
+
+ <nav id="menu">
+        <ul class="navigation-menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Works</a>
+                <ul>
+                    <li><a href="#">Dog Supplies</a>
+                        <ul>
+                            <li><a href="#">Food & Treats</a></li>
+                            <li><a href="#">Toys</a></li>
+                            <li><a href="#">Beds & Furniture</a></li>
+                            <li><a href="#">Outdoor Supplies</a></li>
+                            <li><a href="#">Clothing</a></li>
+                        </ul>
+                    </li>
+    
+                    <li><a href="#">Cat Supplies</a>
+                        <ul>
+                            <li><a href="#">Food & Treats</a></li>
+                            <li><a href="#">Toys</a></li>
+                            <li><a href="#">Beds & Furniture</a></li>
+                        </ul>
+                    </li>
+    
+                    <li><a href="#">Bird Supplies</a>
+                        <ul>
+                            <li><a href="#">Food & Treats</a></li>
+                            <li><a href="#">Toys</a></li>
+                            <li><a href="#">Furniture</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Fish Supplies</a>
+                        <ul>
+                            <li><a href="#">Food</a></li>
+                            <li><a href="#">Aquariums</a></li>
+                            <li><a href="#">Rocks & Decorations</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+    
+            <li><a href="#">Services</a>
+                <ul>
+                    <li><a href="#">Grooming</a>
+                        <ul>
+                            <li><a href="#">Coat Care</a></li>
+                            <li><a href="#">Nail Care</a></li>
+                            <li><a href="#">Doggie Deluxe Spa Day</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Boarding</a>
+                        <ul>
+                            <li><a href="#">Short Term Boarding</a></li>
+                            <li><a href="#">Doggie Daycare</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#">Locations & Hours</a>
+                <ul>
+                    <li><a href="#">North America</a></li>
+                    <li><a href="#">Europe</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">About Us</a>
+                <ul>
+                    <li><a href="#">Our Team</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </li>
+        </ul>
+  </nav> 
+
+
 <footer>
 <a href=""><i class="fa-solid fa-house"></i></a>
 <a href=""><i class="fa-solid fa-mountain-sun"></i></a>
@@ -129,7 +355,7 @@
 <a href=""><i class="fa-solid fa-people-group"></i></a>
 <a href=""><i class="fa-solid fa-gears"></i></a>
 </footer>
-      <script>
+<script>
         // GitHub Repo : https://github.com/aryan-tayal/Mountains-Parallax
 // Live Site : https://aryan-tayal.github.io/Mountains-Parallax/
 
@@ -149,6 +375,7 @@ window.addEventListener('scroll',()=>{
     text.style.bottom = `-${value}px`;
     man.style.height = `${window.innerHeight - value}px`
 })
-      </script>
+
+</script>
 </body>
 </html>
